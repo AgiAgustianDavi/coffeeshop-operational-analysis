@@ -2,7 +2,7 @@
 
 > Analisis data kasir (POS) **Aroma Jaya**, kedai kopi dengan 3 cabang, untuk membantu owner menjawab satu pertanyaan sederhana: **kapan staf dan stok perlu ditambah, dan kapan boleh dikurangi?**
 
-**Oleh:** [isi nama kamu] | **LinkedIn:** [isi link] | **Dashboard Tableau:** [Buka di Tableau Public](https://public.tableau.com/views/AromaJaya-Kapantokopalingramai/Dashboard1)
+**Oleh:** Agi Agustian Davi | **LinkedIn:** [https://www.linkedin.com/in/agi-agustian-davi] | **Dashboard Tableau:** [Buka di Tableau Public](https://public.tableau.com/views/AromaJaya-Kapantokopalingramai/Dashboard1)
 
 ---
 
