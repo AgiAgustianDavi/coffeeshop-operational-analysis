@@ -6,7 +6,7 @@
 
 ---
 
-## Ringkasan untuk yang tidak punya waktu membaca semuanya
+## Ringkasan eksekutif
 
 - **Hari paling ramai adalah Sabtu**, lalu Minggu dan Jumat. Sabtu sekitar **2 kali lebih ramai** daripada Senin sampai Rabu.
 - **Jamnya berbeda tiap hari.** Senin–Kamis ramai di pagi (jam 7–9) dan makan siang (jam 12–13). Jumat ramai di pagi, siang, **dan malam**. Sabtu–Minggu sepi sampai siang, lalu **ramai jam 16–20**.
