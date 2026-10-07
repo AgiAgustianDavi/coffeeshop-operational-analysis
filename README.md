@@ -39,8 +39,8 @@ Pertanyaan yang dijawab:
 
 | | |
 |---|---|
-| Sumber | [isi sumber dataset] (dipakai sebagai data latihan) |
-| Isi | Catatan transaksi kasir: tanggal, jam, cabang, produk, jumlah, harga, dan jenis pesanan (makan di tempat atau bawa pulang) |
+| Sumber | Data sintetis/fiktif (dipakai sebagai data latihan) |
+| Isi | Catatan transaksi kasir: tanggal, jam, cabang, produk, jumlah, harga, dan jenis pesanan |
 | Periode | 1 Januari sampai 29 Juni 2026 (180 hari) |
 | Ukuran | 42.643 baris data, sekitar 30.000 transaksi, 3 cabang, 8 produk |
 
@@ -54,8 +54,8 @@ Proyek ini mengikuti enam tahap: **Tanya, Siapkan, Bersihkan, Analisis, Sajikan,
 |---|---|---|
 | Tanya | - | Menentukan keputusan dan pertanyaan di atas |
 | Siapkan (memeriksa data) | Python | `notebooks/data_profiling.ipynb` |
-| Bersihkan | Python | `notebooks/data_cleaning.ipynb`, `data/cleaned_data.csv`, `docs/log_cleaning.md` |
-| Analisis | Excel | `excel/analisis_aroma_jaya.xlsx` |
+| Bersihkan | Python | `notebooks/data_cleaning.ipynb`, `data/dataset_pos_aromajaya_clean.csv`, `docs/log_cleaning.md` |
+| Analisis | Excel | `excel/analysis.xlsx` |
 | Sajikan | Tableau | [Dashboard di Tableau Public](https://public.tableau.com/views/AromaJaya-Kapantokopalingramai/Dashboard1) |
 | Rekomendasikan | - | Bagian 5 di bawah |
 
@@ -78,14 +78,12 @@ Proyek ini mengikuti enam tahap: **Tanya, Siapkan, Bersihkan, Analisis, Sajikan,
 Jumat sudah ramai hampir seperti akhir pekan, walaupun secara kalender Jumat termasuk hari kerja. Karena itu, hari tidak dikelompokkan sebagai "hari kerja" dan "akhir pekan", melainkan dilihat satu per satu.
 
 ![Hari paling ramai](images/01_hari_paling_ramai.png)
-<!-- GANTI: screenshot tabel/pivot "1. Hari apa yang paling ramai" dari Excel, atau grafik batang dari Tableau -->
 
 ### 4.2 Jam ramainya berbeda tiap hari: ada tiga pola
 
 Peta di bawah menunjukkan rata-rata transaksi per jam. **Semakin hijau, semakin ramai.**
 
 ![Peta jam dan hari](images/02_peta_panas_jam_hari.png)
-<!-- GANTI: screenshot peta warna (heatmap) jam x hari dari Excel atau Tableau -->
 
 - **Senin sampai Kamis: dua gelombang.** Pagi (jam 7–9) dan makan siang (jam 12–13). Dua gelombang ini menampung sekitar **80% transaksi** hari itu. Jam 8 adalah yang paling padat. Setelah jam 14, kedai hampir kosong (rata-rata 1–3 transaksi per jam untuk ketiga cabang digabung).
 - **Jumat: tiga gelombang.** Pagi dan siang (sekitar 59% transaksi) ditambah gelombang malam jam 17–21 (sekitar 36%). Jam 8 pagi hari Jumat adalah jam hari kerja yang paling padat.
@@ -102,7 +100,6 @@ Peta di bawah menunjukkan rata-rata transaksi per jam. **Semakin hijau, semakin 
 Di ketiga cabang, Jumat sampai Minggu sama-sama sekitar 2 kali lebih ramai daripada Senin sampai Rabu. Jam ramainya juga sama. Yang berbeda hanya ukurannya: Sudirman sekitar **2,5 kali** Gading Serpong, dan Senopati sekitar **1,8 kali**.
 
 ![Perbandingan cabang](images/03_perbandingan_cabang.png)
-<!-- GANTI: screenshot tabel "rata-rata per cabang x hari" dari Excel, atau grafik dari Tableau -->
 
 > **Catatan jujur:** nama cabang di data (Sudirman *Office*, Senopati *Hangout*, Gading Serpong *Residential*) tidak terlihat di pola penjualannya. Misalnya cabang Office tidak lebih sepi di akhir pekan. Jadi analisis ini tidak menjelaskan pola dengan karakter lokasi cabang.
 
@@ -124,7 +121,6 @@ Dari setiap 100 item yang terjual:
 Komposisi ini hampir sama di pagi dan sore, dan juga sama di Senin–Kamis dan Jumat–Minggu (selisih tiap produk kurang dari 1 poin persen antara pagi dan sore). Tidak ada produk yang "khusus pagi" atau "khusus akhir pekan". Yang berubah hanya **jumlah pembelinya**.
 
 ![Komposisi produk](images/04_komposisi_produk.png)
-<!-- GANTI: screenshot tabel "4. Produk apa yang dominan di jam berbeda" dari Excel, atau grafik dari Tableau -->
 
 ### 4.5 Penjualan stabil dari bulan ke bulan
 
@@ -140,7 +136,6 @@ Komposisi ini hampir sama di pagi dan sore, dan juga sama di Senin–Kamis dan J
 Angkanya hanya bergerak sedikit dan tidak ada arah naik atau turun. Total per bulan terlihat naik-turun (Februari terendah, Mei tertinggi), tetapi itu karena jumlah hari tiap bulan berbeda. Mei juga punya 15 hari Jumat–Minggu (bulan lain 12–14), yaitu hari-hari yang memang ramai.
 
 ![Tren bulanan](images/05_tren_bulanan.png)
-<!-- GANTI: screenshot tabel "5. Tren Bulanan" dari Excel, atau grafik garis dari Tableau -->
 
 ## 5. Rekomendasi untuk owner
 
@@ -161,9 +156,6 @@ Tingkat keramaian (jumlah transaksi per jam untuk ketiga cabang digabung):
 | **Sepi** (tim ramping) | Jam lainnya, termasuk Senin–Kamis setelah jam 14 dan Sabtu–Minggu pagi |
 
 Cara menjalankannya: sistem **shift**. Misalnya shift pagi dan siang untuk hari kerja, serta shift sore dan malam untuk Jumat sampai Minggu.
-
-![Usulan jadwal staf](images/06_usulan_jadwal_staf.png)
-<!-- GANTI: screenshot bagian jadwal/tingkat keramaian di dashboard Tableau, atau tabel di atas yang sudah diberi warna -->
 
 ### 5.2 Atur stok menurut jumlah pengunjung, bukan menurut jenis produk
 
@@ -199,23 +191,22 @@ Sisanya diperbaiki, bukan dibuang: nama cabang yang tertulis dengan 6 cara berbe
 ```
 ├── README.md
 ├── data/
-│   ├── dataset_pos_aromajaya.csv    # data mentah
-│   └── cleaned_data.csv             # data bersih
+│   ├── dataset_pos_aromajaya.csv        # data mentah
+│   └── dataset_pos_aromajaya_clean.csv  # data bersih
 ├── notebooks/
-│   ├── data_profiling.ipynb         # memeriksa kondisi data
-│   └── data_cleaning.ipynb          # membersihkan data
+│   ├── data_profiling.ipynb             # memeriksa kondisi data
+│   └── data_cleaning.ipynb              # membersihkan data
 ├── excel/
-│   └── analisis_aroma_jaya.xlsx     # analisis (pivot)
+│   └── analysis.xlsx         # analisis (pivot)
 ├── docs/
-│   └── log_cleaning.md              # catatan pembersihan
+│   └── log_cleaning.md                  # catatan pembersihan
 └── images/
     ├── dashboard_tableau.png
     ├── 01_hari_paling_ramai.png
     ├── 02_peta_panas_jam_hari.png
     ├── 03_perbandingan_cabang.png
     ├── 04_komposisi_produk.png
-    ├── 05_tren_bulanan.png
-    └── 06_usulan_jadwal_staf.png
+    └── 05_tren_bulanan.png
 ```
 
 ## 9. Cara mengulang analisis
